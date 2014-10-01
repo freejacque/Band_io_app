@@ -1,0 +1,28 @@
+<h2>Search for an Event</h2>
+
+
+<form  action="<%= events_path %>" method="GET" >
+  <label>Date: </label>
+  <input type="date" name="date" />
+  <input type="submit" />
+</form></br></br>
+
+
+<ol>
+<% @events.each do |event| %>
+  <li>Date: <%= event.date %></br>
+      Alcohol Served: <%= event.alcohol_served %></br>
+      <% @band.each do |band| %>
+        <% if band.id == event.band_id %>
+          Band:  <%= band.name %></br>
+        <% end %>
+      <% end %>
+      <% @venue.each do |venue| %>
+        <% if venue.id == event.venue_id %>
+          Venue:  <%= venue.name %></br>
+        <% end %>
+      <% end %>
+   </li></br></br>
+<% end %>
+</ol>
+
